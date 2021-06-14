@@ -13,6 +13,11 @@ import java.sql.DriverManager;
  * @author serhe
  */
 public class Inmobliliaria {
+    
+     public static void main(String[] args) {
+            ConexionBDInmobiliaria conexion = new ConexionBDInmobiliaria();
+            conexion.getConnection();
+        } 
 
     /**
      * @param args the command line arguments

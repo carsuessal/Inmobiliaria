@@ -130,14 +130,14 @@
                           <Component id="jLabel2" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="107" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jTextField5" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField8" max="32767" attributes="0"/>
-                              <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorTelefono" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorSalario" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorLugarTrabajo" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorProfesion" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel4" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
-                              <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField6" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorNombre" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorApellidos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jtfArrendadorDireccion" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
@@ -154,7 +154,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField35" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
+                                  <Component id="jtfArrendadorDescripcion" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" pref="138" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -174,41 +174,41 @@
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorNombre" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorApellidos" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorProfesion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorLugarTrabajo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField35" min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="jtfArrendadorDescripcion" min="-2" pref="215" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="modificarPopietario" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendadorSalario" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfArrendadorTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="guardarPopietario" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jtfArrendadorDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="limpiarPopietario" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -259,19 +259,19 @@
                 <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorApellidos">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorLugarTrabajo">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorNombre">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorTelefono">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorDireccion">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField7">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorProfesion">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField8">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorSalario">
             </Component>
             <Component class="javax.swing.JButton" name="guardarPopietario">
               <Properties>
@@ -291,9 +291,9 @@
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField35">
+            <Component class="javax.swing.JTextField" name="jtfArrendadorDescripcion">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField35ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfArrendadorDescripcionActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -345,21 +345,21 @@
                                           </Group>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextField25" max="32767" attributes="0"/>
-                                      <Component id="jTextField27" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField32" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadSnr" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadTelefono" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadZona" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField26" alignment="1" pref="200" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadDireccion" alignment="1" pref="200" max="32767" attributes="0"/>
                                       <Component id="jLabel28" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                                      <Component id="jTextField31" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadBarrio" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jLabel30" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
                                       <Component id="jLabel37" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
-                                      <Component id="jTextField33" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jtfPropiedadPrecioAlquiler" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jTextField34" max="32767" attributes="0"/>
+                              <Component id="jtfPropiedadDescripcion" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel38" min="-2" pref="147" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -386,8 +386,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField25" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadSnr" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -396,8 +396,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField27" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField31" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadBarrio" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -406,13 +406,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField32" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField33" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadZona" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfPropiedadPrecioAlquiler" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextField34" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="jtfPropiedadDescripcion" min="-2" pref="146" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="guardarPropiedad" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -430,9 +430,9 @@
                     <Property name="text" type="java.lang.String" value="N&#xfa;mero de matr&#xed;cula (SNR)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField25">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadSnr">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField25ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadSnrActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel11">
@@ -445,14 +445,14 @@
                     <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField26">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadDireccion">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField26ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadDireccionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField27">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadTelefono">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField27ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadTelefonoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel29">
@@ -470,19 +470,19 @@
                     <Property name="text" type="java.lang.String" value="Precio de alquiler"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField31">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadBarrio">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField31ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadBarrioActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField32">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadZona">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField32ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadZonaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField33">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadPrecioAlquiler">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField33ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadPrecioAlquilerActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
@@ -490,9 +490,9 @@
                     <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField34">
+                <Component class="javax.swing.JTextField" name="jtfPropiedadDescripcion">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField34ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPropiedadDescripcionActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="guardarPropiedad">
@@ -541,11 +541,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField23" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField19" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField21" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField17" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField24" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfArrendatarioLugarTrabajo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfArrendatarioApellidos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfArrendatarioProfesion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfArrendatarioNombres" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jtfArrendatarioSalario" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel18" min="-2" pref="116" max="-2" attributes="0"/>
@@ -553,14 +553,14 @@
                                           <Component id="jLabel17" alignment="0" min="-2" pref="88" max="-2" attributes="0"/>
                                           <Component id="jLabel23" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                                           <Component id="jLabel19" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                                          <Component id="jTextField18" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
+                                          <Component id="jtfArrendatarioTelefono" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField20" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="jtfArrendatarioDireccion" min="-2" pref="241" max="-2" attributes="0"/>
                           <Component id="jLabel20" min="-2" pref="128" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="0" min="-2" pref="89" max="-2" attributes="0"/>
                       </Group>
@@ -581,7 +581,7 @@
                               <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextField1" min="-2" pref="215" max="-2" attributes="0"/>
+                              <Component id="jtfArrendatarioDescripcion" min="-2" pref="215" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -599,41 +599,41 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jTextField17" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendatarioNombres" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField19" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendatarioApellidos" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField21" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendatarioProfesion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField23" min="-2" max="-2" attributes="0"/>
+                              <Component id="jtfArrendatarioLugarTrabajo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField1" min="-2" pref="216" max="-2" attributes="0"/>
+                          <Component id="jtfArrendatarioDescripcion" min="-2" pref="216" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfArrendatarioSalario" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="modificarArrendatario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfArrendatarioTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="guardarArrendatario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField20" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jtfArrendatarioDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="limpiarArrendatario" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="96" max="32767" attributes="0"/>
@@ -647,16 +647,16 @@
                 <Property name="text" type="java.lang.String" value="Nombres"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField17">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioNombres">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Apellidos"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField18">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioTelefono">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField19">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioApellidos">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
               <Properties>
@@ -668,9 +668,9 @@
                 <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField20">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioDireccion">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField21">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioProfesion">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
               <Properties>
@@ -687,14 +687,14 @@
                 <Property name="text" type="java.lang.String" value="Lugar de trabajo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField23">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioLugarTrabajo">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel24">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField24">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioSalario">
             </Component>
             <Component class="javax.swing.JButton" name="guardarArrendatario">
               <Properties>
@@ -714,7 +714,7 @@
                 <Property name="text" type="java.lang.String" value="Limpiar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="jtfArrendatarioDescripcion">
             </Component>
           </SubComponents>
         </Container>
@@ -826,6 +826,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField28">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel32">
                   <Properties>
@@ -833,6 +836,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField29">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>

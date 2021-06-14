@@ -5,6 +5,25 @@
  */
 package inmobliliaria;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import Controlador.ConexionBDInmobiliaria;
+import Modelos.Arrendador;
+import Modelos.Cliente;
+import Modelos.Propiedad;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ButtonGroup;
+import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JRadioButton;
 /**
  *
  * @author serhe
@@ -14,10 +33,108 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     /**
      * Creates new form RegistroYDisponibilidad
      */
+    private static final long serialVersionUID = 1L;
+    
     public RegistroYDisponibilidad() {
         initComponents();
     }
 
+    public void enviarElementoA(Arrendador arrendador) {
+		PreparedStatement stmt = null;
+			
+
+		String query = "INSERT INTO Propietario (nombres, apellidos, telefono, direccion, profesion, lugar_de_trabajo, descripcion_de_la_propiedad, salario) VALUES (?,?,?,?,?,?,?,?)";
+
+		try {
+			System.out.println(arrendador);
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, arrendador.getNombresA());
+			stmt.setString(2, arrendador.getApellidosA());
+			stmt.setString(3, arrendador.getTelefonoA());
+                        stmt.setString(4, arrendador.getDireccionA());
+			stmt.setString(5, arrendador.getProfesionA());
+			stmt.setString(6, arrendador.getLugarTrabajoA());
+			stmt.setString(7, arrendador.getDescripcionPropiedadA());
+			stmt.setInt(8, arrendador.getSalarioA());
+			
+			int retorno = stmt.executeUpdate();
+	        if (retorno>0)
+	           System.out.println("Insertado correctamente");   
+	        	JOptionPane.showMessageDialog(null, "El propietario "+ arrendador.getNombresA() + "\n Se ha registrado con exito ");
+
+
+		} catch (Exception e) {
+			System.out.println("Error al conectar con la base de datos -Metodo:envarElemento- ");
+			System.out.println(e);
+		}
+	}
+	public void enviarElementoC(Cliente cliente) {
+		PreparedStatement stmt = null;
+			
+
+		String query = "INSERT INTO Arrendatario (nombres, apellidos, telefono, direccion, profesion, lugar_de_trabajo, descripcion_de_la_propiedad, salario) VALUES (?,?,?,?,?,?,?,?)";
+
+		try {
+			System.out.println(cliente);
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, cliente.getNombresC());
+			stmt.setString(2, cliente.getApellidosC());
+			stmt.setString(3, cliente.getTelefonoC());
+                        stmt.setString(4, cliente.getDireccionC());
+			stmt.setString(5, cliente.getProfesionC());
+			stmt.setString(6, cliente.getLugarTrabajoC());
+			stmt.setString(7, cliente.getDescripcionPropiedadC());
+			stmt.setInt(8, cliente.getSalarioC());
+			
+			int retorno = stmt.executeUpdate();
+	        if (retorno>0)
+	           System.out.println("Insertado correctamente");   
+	        	JOptionPane.showMessageDialog(null, "El arrendatario "+ cliente.getNombresC() + "\n Se ha registrado con exito ");
+
+
+		} catch (Exception e) {
+			System.out.println("Error al conectar con la base de datos -Metodo:envarElemento- ");
+			System.out.println(e);
+		}
+	}
+        
+        public void enviarElementoP(Propiedad propiedad) {
+		PreparedStatement stmt = null;
+			
+
+		String query = "INSERT INTO Propiedad (numero_de_matricula, direccion, telefono, barrio, zona, precio_alquiler, descripcion_de_la_propiedad) VALUES (?,?,?,?,?,?,?)";
+
+		try {
+			System.out.println(propiedad);
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+
+			stmt = con.prepareStatement(query);
+			stmt.setString(1, propiedad.getNumMatricula());
+			stmt.setString(2, propiedad.getDireccion());
+			stmt.setString(3, propiedad.getTelefono());
+			stmt.setString(4, propiedad.getBarrio());
+			stmt.setInt(5, propiedad.getPrecioAlquiler());
+                        stmt.setString(6, propiedad.getZona());
+			stmt.setString(7, propiedad.getDescripcionPropiedad());
+			
+			int retorno = stmt.executeUpdate();
+	        if (retorno>0)
+	           System.out.println("Insertado correctamente");   
+	        	JOptionPane.showMessageDialog(null, "La propiedad "+ propiedad.getNumMatricula() + "\n Se ha registrado con exito ");
+
+
+		} catch (Exception e) {
+			System.out.println("Error al conectar con la base de datos -Metodo:enviarElemento- ");
+			System.out.println(e);
+		}
+	}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,56 +159,56 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        jtfArrendadorApellidos = new javax.swing.JTextField();
+        jtfArrendadorLugarTrabajo = new javax.swing.JTextField();
+        jtfArrendadorNombre = new javax.swing.JTextField();
+        jtfArrendadorTelefono = new javax.swing.JTextField();
+        jtfArrendadorDireccion = new javax.swing.JTextField();
+        jtfArrendadorProfesion = new javax.swing.JTextField();
+        jtfArrendadorSalario = new javax.swing.JTextField();
         guardarPopietario = new javax.swing.JButton();
         modificarPopietario = new javax.swing.JButton();
         limpiarPopietario = new javax.swing.JButton();
-        jTextField35 = new javax.swing.JTextField();
+        jtfArrendadorDescripcion = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField25 = new javax.swing.JTextField();
+        jtfPropiedadSnr = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jTextField26 = new javax.swing.JTextField();
-        jTextField27 = new javax.swing.JTextField();
+        jtfPropiedadDireccion = new javax.swing.JTextField();
+        jtfPropiedadTelefono = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jTextField31 = new javax.swing.JTextField();
-        jTextField32 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
+        jtfPropiedadBarrio = new javax.swing.JTextField();
+        jtfPropiedadZona = new javax.swing.JTextField();
+        jtfPropiedadPrecioAlquiler = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        jTextField34 = new javax.swing.JTextField();
+        jtfPropiedadDescripcion = new javax.swing.JTextField();
         guardarPropiedad = new javax.swing.JButton();
         modificarPropiedad = new javax.swing.JButton();
         limpiarPropiedad = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        jtfArrendatarioNombres = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
+        jtfArrendatarioTelefono = new javax.swing.JTextField();
+        jtfArrendatarioApellidos = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
+        jtfArrendatarioDireccion = new javax.swing.JTextField();
+        jtfArrendatarioProfesion = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
+        jtfArrendatarioLugarTrabajo = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jTextField24 = new javax.swing.JTextField();
+        jtfArrendatarioSalario = new javax.swing.JTextField();
         guardarArrendatario = new javax.swing.JButton();
         modificarArrendatario = new javax.swing.JButton();
         limpiarArrendatario = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jtfArrendatarioDescripcion = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
@@ -178,9 +295,9 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 
         limpiarPopietario.setText("Limpiar");
 
-        jTextField35.addActionListener(new java.awt.event.ActionListener() {
+        jtfArrendadorDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField35ActionPerformed(evt);
+                jtfArrendadorDescripcionActionPerformed(evt);
             }
         });
 
@@ -198,14 +315,14 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField8)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfArrendadorTelefono, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfArrendadorSalario)
+                        .addComponent(jtfArrendadorLugarTrabajo, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfArrendadorProfesion, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jtfArrendadorNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfArrendadorApellidos, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jtfArrendadorDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -217,7 +334,7 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                         .addGap(51, 51, 51))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfArrendadorDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
@@ -231,38 +348,38 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendadorApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendadorProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendadorLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7))
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfArrendadorDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modificarPopietario)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendadorSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfArrendadorTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(guardarPopietario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfArrendadorDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(limpiarPopietario))))
                 .addContainerGap(105, Short.MAX_VALUE))
         );
@@ -273,9 +390,9 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 
         jLabel10.setText("Número de matrícula (SNR)");
 
-        jTextField25.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadSnr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField25ActionPerformed(evt);
+                jtfPropiedadSnrActionPerformed(evt);
             }
         });
 
@@ -283,15 +400,15 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 
         jLabel28.setText("Dirección");
 
-        jTextField26.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField26ActionPerformed(evt);
+                jtfPropiedadDireccionActionPerformed(evt);
             }
         });
 
-        jTextField27.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField27ActionPerformed(evt);
+                jtfPropiedadTelefonoActionPerformed(evt);
             }
         });
 
@@ -301,29 +418,29 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 
         jLabel37.setText("Precio de alquiler");
 
-        jTextField31.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadBarrio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField31ActionPerformed(evt);
+                jtfPropiedadBarrioActionPerformed(evt);
             }
         });
 
-        jTextField32.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadZona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField32ActionPerformed(evt);
+                jtfPropiedadZonaActionPerformed(evt);
             }
         });
 
-        jTextField33.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadPrecioAlquiler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField33ActionPerformed(evt);
+                jtfPropiedadPrecioAlquilerActionPerformed(evt);
             }
         });
 
         jLabel38.setText("Descripción");
 
-        jTextField34.addActionListener(new java.awt.event.ActionListener() {
+        jtfPropiedadDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField34ActionPerformed(evt);
+                jtfPropiedadDescripcionActionPerformed(evt);
             }
         });
 
@@ -353,18 +470,18 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField25)
-                            .addComponent(jTextField27)
-                            .addComponent(jTextField32))
+                            .addComponent(jtfPropiedadSnr)
+                            .addComponent(jtfPropiedadTelefono)
+                            .addComponent(jtfPropiedadZona))
                         .addGap(112, 112, 112)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jtfPropiedadDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField31, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jtfPropiedadBarrio, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField33, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jTextField34)
+                            .addComponent(jtfPropiedadPrecioAlquiler, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jtfPropiedadDescripcion)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -385,28 +502,28 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                     .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPropiedadSnr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPropiedadDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel30))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPropiedadTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPropiedadBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(jLabel37))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPropiedadZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfPropiedadPrecioAlquiler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jLabel38)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfPropiedadDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarPropiedad)
@@ -466,11 +583,11 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField23)
-                            .addComponent(jTextField19)
-                            .addComponent(jTextField21)
-                            .addComponent(jTextField17)
-                            .addComponent(jTextField24)
+                            .addComponent(jtfArrendatarioLugarTrabajo)
+                            .addComponent(jtfArrendatarioApellidos)
+                            .addComponent(jtfArrendatarioProfesion)
+                            .addComponent(jtfArrendatarioNombres)
+                            .addComponent(jtfArrendatarioSalario)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,10 +595,10 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jtfArrendatarioTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(26, 26, 26))
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfArrendatarioDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,7 +614,7 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendatarioDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -510,37 +627,37 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendatarioNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendatarioApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendatarioProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfArrendatarioLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(jLabel24))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfArrendatarioDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfArrendatarioSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(modificarArrendatario))
                 .addGap(9, 9, 9)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfArrendatarioTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(guardarArrendatario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfArrendatarioDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limpiarArrendatario))
                 .addContainerGap(96, Short.MAX_VALUE))
         );
@@ -551,7 +668,11 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 
         jLabel31.setText("Dirección");
 
+        jTextField28.setEditable(false);
+
         jLabel32.setText("Descripción");
+
+        jTextField29.setEditable(false);
 
         jLabel33.setText("Estado");
 
@@ -695,47 +816,59 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarArrendatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArrendatarioActionPerformed
-        // TODO add your handling code here:
+        int salarioCliente = Integer.parseInt(jtfArrendatarioSalario.getText());
+        
+        Cliente cliente = new Cliente(jtfArrendatarioNombres.getText(),jtfArrendatarioApellidos.getText(),jtfArrendatarioTelefono.getText(),jtfArrendatarioDireccion.getText(),jtfArrendatarioProfesion.getText(),jtfArrendatarioLugarTrabajo.getText(),jtfArrendatarioDescripcion.getText(), salarioCliente);
+        enviarElementoC(cliente);
+    // TODO add your handling code here:
     }//GEN-LAST:event_guardarArrendatarioActionPerformed
 
-    private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
+    private void jtfPropiedadSnrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadSnrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField25ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadSnrActionPerformed
 
-    private void jTextField26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField26ActionPerformed
+    private void jtfPropiedadDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadDireccionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField26ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadDireccionActionPerformed
 
-    private void jTextField27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField27ActionPerformed
+    private void jtfPropiedadTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField27ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadTelefonoActionPerformed
 
-    private void jTextField31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField31ActionPerformed
+    private void jtfPropiedadBarrioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadBarrioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField31ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadBarrioActionPerformed
 
-    private void jTextField32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField32ActionPerformed
+    private void jtfPropiedadZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadZonaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField32ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadZonaActionPerformed
 
-    private void jTextField33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField33ActionPerformed
+    private void jtfPropiedadPrecioAlquilerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadPrecioAlquilerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField33ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadPrecioAlquilerActionPerformed
 
-    private void jTextField34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField34ActionPerformed
+    private void jtfPropiedadDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPropiedadDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField34ActionPerformed
+    }//GEN-LAST:event_jtfPropiedadDescripcionActionPerformed
 
     private void guardarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPropiedadActionPerformed
-        // TODO add your handling code here:
+        int precioAlquilerPropiedad=Integer.parseInt(jtfPropiedadPrecioAlquiler.getText());
+        Propiedad propiedad = new Propiedad (jtfPropiedadSnr.getText(),jtfPropiedadDireccion.getText(),jtfPropiedadTelefono.getText(),jtfPropiedadBarrio.getText(),jtfPropiedadZona.getText(), precioAlquilerPropiedad,jtfPropiedadDescripcion.getText());
+        enviarElementoP(propiedad);
+    // TODO add your handling code here:
     }//GEN-LAST:event_guardarPropiedadActionPerformed
 
-    private void jTextField35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField35ActionPerformed
+    private void jtfArrendadorDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfArrendadorDescripcionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField35ActionPerformed
+    }//GEN-LAST:event_jtfArrendadorDescripcionActionPerformed
 
     private void guardarPopietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPopietarioActionPerformed
-        // TODO add your handling code here:
+        int salarioPropietario = Integer.parseInt(jtfArrendadorSalario.getText());
+        
+        Arrendador arrendador = new Arrendador(jtfArrendadorNombre.getText(),jtfArrendadorApellidos.getText(),jtfArrendadorTelefono.getText(),jtfArrendadorDireccion.getText(),jtfArrendadorProfesion.getText(),jtfArrendadorLugarTrabajo.getText(),jtfArrendadorDescripcion.getText(), salarioPropietario);
+        enviarElementoA(arrendador);
+
+// TODO add your handling code here:
     }//GEN-LAST:event_guardarPopietarioActionPerformed
 
     /**
@@ -820,32 +953,32 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField26;
-    private javax.swing.JTextField jTextField27;
     private javax.swing.JTextField jTextField28;
     private javax.swing.JTextField jTextField29;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField30;
-    private javax.swing.JTextField jTextField31;
-    private javax.swing.JTextField jTextField32;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jtfArrendadorApellidos;
+    private javax.swing.JTextField jtfArrendadorDescripcion;
+    private javax.swing.JTextField jtfArrendadorDireccion;
+    private javax.swing.JTextField jtfArrendadorLugarTrabajo;
+    private javax.swing.JTextField jtfArrendadorNombre;
+    private javax.swing.JTextField jtfArrendadorProfesion;
+    private javax.swing.JTextField jtfArrendadorSalario;
+    private javax.swing.JTextField jtfArrendadorTelefono;
+    private javax.swing.JTextField jtfArrendatarioApellidos;
+    private javax.swing.JTextField jtfArrendatarioDescripcion;
+    private javax.swing.JTextField jtfArrendatarioDireccion;
+    private javax.swing.JTextField jtfArrendatarioLugarTrabajo;
+    private javax.swing.JTextField jtfArrendatarioNombres;
+    private javax.swing.JTextField jtfArrendatarioProfesion;
+    private javax.swing.JTextField jtfArrendatarioSalario;
+    private javax.swing.JTextField jtfArrendatarioTelefono;
+    private javax.swing.JTextField jtfPropiedadBarrio;
+    private javax.swing.JTextField jtfPropiedadDescripcion;
+    private javax.swing.JTextField jtfPropiedadDireccion;
+    private javax.swing.JTextField jtfPropiedadPrecioAlquiler;
+    private javax.swing.JTextField jtfPropiedadSnr;
+    private javax.swing.JTextField jtfPropiedadTelefono;
+    private javax.swing.JTextField jtfPropiedadZona;
     private javax.swing.JButton limpiarArrendatario;
     private javax.swing.JButton limpiarPopietario;
     private javax.swing.JButton limpiarPropiedad;

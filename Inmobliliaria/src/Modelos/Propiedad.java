@@ -12,16 +12,16 @@ package Modelos;
 public class Propiedad {
     
     private String numMatricula;
-    private String direcion;
+    private String direccion;
     private String telefono;
     private String barrio;
     private String zona;
-    private String precioAlquiler;
+    private int precioAlquiler;
     private String descripcionPropiedad;
 
-    public Propiedad(String numMatricula, String direcion, String telefono, String barrio, String zona, String precioAlquiler, String descripcion) {
+    public Propiedad(String numMatricula, String direcion, String telefono, String barrio, String zona, int precioAlquiler, String descripcionPropiedad) {
         this.numMatricula = numMatricula;
-        this.direcion = direcion;
+        this.direccion = direcion;
         this.telefono = telefono;
         this.barrio = barrio;
         this.zona = zona;
@@ -37,12 +37,12 @@ public class Propiedad {
         this.numMatricula = numMatricula;
     }
 
-    public String getDirecion() {
-        return direcion;
+    public String getDireccion() {
+        return direccion;
     }
 
     public void setDirecion(String direcion) {
-        this.direcion = direcion;
+        this.direccion = direccion;
     }
 
     public String getTelefono() {
@@ -69,11 +69,11 @@ public class Propiedad {
         this.zona = zona;
     }
 
-    public String getPrecioAlquiler() {
+    public int getPrecioAlquiler() {
         return precioAlquiler;
     }
 
-    public void setPrecioAlquiler(String precioAlquiler) {
+    public void setPrecioAlquiler(int precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }
 
@@ -87,7 +87,7 @@ public class Propiedad {
 
     @Override
     public String toString() {
-        return "Propiedad{" + "numMatricula=" + numMatricula + ", direcion=" + direcion + ", telefono=" + telefono + ", barrio=" + barrio + ", zona=" + zona + ", precioAlquiler=" + precioAlquiler + ", descripcionPropiedad=" + descripcionPropiedad + '}';
+        return "Propiedad{" + "numMatricula=" + numMatricula + ", direccion=" + direccion + ", telefono=" + telefono + ", barrio=" + barrio + ", zona=" + zona + ", precioAlquiler=" + precioAlquiler + ", descripcionPropiedad=" + descripcionPropiedad + '}';
     }
     
     

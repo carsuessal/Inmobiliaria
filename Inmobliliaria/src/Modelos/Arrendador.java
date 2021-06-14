@@ -11,6 +11,7 @@ package Modelos;
  */
 public class Arrendador {
     private String nombresA;
+    private String apellidosA;
     private String telefonoA;
     private String direccionA;
     private String profesionA;
@@ -18,14 +19,32 @@ public class Arrendador {
     private String descripcionPropiedadA;
     private int salarioA;
 
+    public Arrendador(String nombresA, String apellidosA, String telefonoA, String direccionA, String profesionA, String lugarTrabajoA, String descripcionPropiedadA, int salarioA) {
+        this.nombresA = nombresA;
+        this.apellidosA = apellidosA;
+        this.telefonoA = telefonoA;
+        this.direccionA = direccionA;
+        this.profesionA = profesionA;
+        this.lugarTrabajoA = lugarTrabajoA;
+        this.descripcionPropiedadA = descripcionPropiedadA;
+        this.salarioA = salarioA;
+    }
+
+    
     public String getNombresA() {
         return nombresA;
     }
-
     public void setNombresA(String nombresA) {
         this.nombresA = nombresA;
     }
+    public String getApellidosA() {
+        return apellidosA;
+    }
 
+    public void setApellidosA(String apellidosA) {
+        this.apellidosA = apellidosA;
+    }
+    
     public String getTelefonoA() {
         return telefonoA;
     }
@@ -76,7 +95,7 @@ public class Arrendador {
 
     @Override
     public String toString() {
-        return "Arrendador{" + "nombresA=" + nombresA + ", telefonoA=" + telefonoA + ", direccionA=" + direccionA + ", profesionA=" + profesionA + ", lugarTrabajoA=" + lugarTrabajoA + ", descripcionPropiedadA=" + descripcionPropiedadA + ", salarioA=" + salarioA + '}';
+        return "Arrendador{" + "nombresA=" + nombresA +"apellidosA"+ apellidosA +", telefonoA=" + telefonoA + ", direccionA=" + direccionA + ", profesionA=" + profesionA + ", lugarTrabajoA=" + lugarTrabajoA + ", descripcionPropiedadA=" + descripcionPropiedadA + ", salarioA=" + salarioA + '}';
     }
     
     

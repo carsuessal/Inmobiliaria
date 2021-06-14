@@ -11,6 +11,7 @@ package Modelos;
  */
 public class Cliente {
     private String nombresC;
+    private String apellidosC;
     private String telefonoC;
     private String direccionC;
     private String profesionC;
@@ -18,8 +19,9 @@ public class Cliente {
     private String descripcionPropiedadC;
     private int salarioC;
 
-    public Cliente(String nombresC, String telefonoC, String direccionC, String profesionC, String lugarTrabajoC, String descripcionPropiedadC, int salarioC) {
+    public Cliente(String nombresC, String apellidosC, String telefonoC, String direccionC, String profesionC, String lugarTrabajoC, String descripcionPropiedadC, int salarioC) {
         this.nombresC = nombresC;
+        this.apellidosC = apellidosC;
         this.telefonoC = telefonoC;
         this.direccionC = direccionC;
         this.profesionC = profesionC;
@@ -36,6 +38,15 @@ public class Cliente {
         this.nombresC = nombresC;
     }
 
+    public String getApellidosC() {
+        return apellidosC;
+    }
+
+    public void setApellidosC(String apellidosC) {
+        this.apellidosC = apellidosC;
+    }
+    
+    
     public String getTelefonoC() {
         return telefonoC;
     }
@@ -86,7 +97,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombresC=" + nombresC + ", telefonoC=" + telefonoC + ", direccionC=" + direccionC + ", profesionC=" + profesionC + ", lugarTrabajoC=" + lugarTrabajoC + ", descripcionPropiedadC=" + descripcionPropiedadC + ", salarioC=" + salarioC + '}';
+        return "Cliente{" + "nombresC=" + nombresC + "apelldiosC=" + apellidosC + ", telefonoC=" + telefonoC + ", direccionC=" + direccionC + ", profesionC=" + profesionC + ", lugarTrabajoC=" + lugarTrabajoC + ", descripcionPropiedadC=" + descripcionPropiedadC + ", salarioC=" + salarioC + '}';
     }
     
 }
