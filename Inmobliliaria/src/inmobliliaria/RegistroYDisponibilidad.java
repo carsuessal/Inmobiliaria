@@ -29,7 +29,9 @@ import javax.swing.JRadioButton;
  * @author serhe
  */
 public class RegistroYDisponibilidad extends javax.swing.JFrame {
-
+    
+    int idGeneralBaseDatos;
+    boolean permisoEdicion = false;
     /**
      * Creates new form RegistroYDisponibilidad
      */
@@ -133,6 +135,174 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
 		} catch (Exception e) {
 			System.out.println("Error al conectar con la base de datos -Metodo:enviarElemento- ");
 			System.out.println(e);
+		}
+	}
+        
+        
+        public void borrarDatosIngresadoArrendador() {
+	jtfArrendadorNombre.setText(null);
+	jtfArrendadorApellidos.setText(null);
+	jtfArrendadorProfesion.setText(null);
+	jtfArrendadorLugarTrabajo.setText(null);
+	jtfArrendadorSalario.setText(null);
+	jtfArrendadorTelefono.setText(null);
+	jtfArrendadorDireccion.setText(null);
+	jtfArrendadorDescripcion.setText(null);
+
+        }
+        public void borrarDatosIngresadoCliente() {
+	jtfArrendatarioNombres.setText(null);
+	jtfArrendatarioApellidos.setText(null);
+	jtfArrendatarioProfesion.setText(null);
+	jtfArrendatarioLugarTrabajo.setText(null);
+	jtfArrendatarioSalario.setText(null);
+	jtfArrendatarioTelefono.setText(null);
+	jtfArrendatarioDireccion.setText(null);
+	jtfArrendatarioDescripcion.setText(null);
+
+        }
+        public void borrarDatosIngresadoPropiedad() {
+	jtfPropiedadSnr.setText(null);
+	jtfPropiedadTelefono.setText(null);
+	jtfPropiedadZona.setText(null);
+	jtfPropiedadDireccion.setText(null);
+	jtfPropiedadBarrio.setText(null);
+	jtfPropiedadPrecioAlquiler.setText(null);
+	jtfPropiedadDescripcion.setText(null);
+	
+        }
+        
+        public void actualizarArrendatario(int id) {
+		
+		int salarioArrendatario = Integer.parseInt(jtfArrendatarioSalario.getText());
+        
+                Cliente arrendatario = new Cliente(jtfArrendatarioNombres.getText(),jtfArrendatarioApellidos.getText(),jtfArrendatarioTelefono.getText(),jtfArrendatarioDireccion.getText(),jtfArrendatarioProfesion.getText(),jtfArrendatarioLugarTrabajo.getText(),jtfArrendatarioDescripcion.getText(), salarioArrendatario);
+        
+		String query = "UPDATE Arrendatario "
+				+ "SET nombres = ?,"
+				+ "apellidos  = ?,"
+				+ "telefono  = ?,"
+				+ "direccion = ?,"
+				+ "profesion = ?,"
+				+ "lugar_de_trabajo = ?,"
+				+ "descripcion_de_la_propiedad = ?, "
+                                + "salario = ? "
+				+ " WHERE id = " + id ;
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+                    PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, arrendatario.getNombresC());
+			pstmt.setString(2,  arrendatario.getApellidosC());
+			pstmt.setString(3,  arrendatario.getTelefonoC());
+			pstmt.setString(4,  arrendatario.getDireccionC());
+			pstmt.setString(5,  arrendatario.getProfesionC());
+			pstmt.setString(6,  arrendatario.getLugarTrabajoC());
+			pstmt.setString(7,  arrendatario.getDescripcionPropiedadC());
+                        pstmt.setInt(8,  arrendatario.getSalarioC());
+			int n = pstmt.executeUpdate();
+			System.out.println(n);
+			//valida si se guardaron los datos; si pst>0 entonces se guardaron
+			if (n > 0)
+				System.out.println("Insertado correctamente");
+			JOptionPane.showMessageDialog(null, "El arrendatario " + arrendatario.getNombresC() + "\n Se ha actulizado con exito ");
+			
+			dbConexion.desconect();
+			
+
+		} catch (Exception e) {
+			
+			System.out.println("Error editando arrendatario" + e);
+		}
+	}
+        
+          public void actualizarArrendador(int id) {
+		
+		int salarioPropietario = Integer.parseInt(jtfArrendadorSalario.getText());
+        
+                Arrendador arrendador = new Arrendador(jtfArrendadorNombre.getText(),jtfArrendadorApellidos.getText(),jtfArrendadorTelefono.getText(),jtfArrendadorDireccion.getText(),jtfArrendadorProfesion.getText(),jtfArrendadorLugarTrabajo.getText(),jtfArrendadorDescripcion.getText(), salarioPropietario);
+                
+                
+		String query = "UPDATE Propietario "
+				+ "SET nombres = ?,"
+				+ "apellidos  = ?,"
+				+ "telefono  = ?,"
+				+ "direccion = ?,"
+				+ "profesion = ?,"
+				+ "lugar_de_trabajo = ?,"
+				+ "descripcion_de_la_propiedad = ?, "
+                                + "salario = ? "
+				+ " WHERE id = " + id ;
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+                    PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, arrendador.getNombresA());
+			pstmt.setString(2,  arrendador.getApellidosA());
+			pstmt.setString(3,  arrendador.getTelefonoA());
+			pstmt.setString(4,  arrendador.getDireccionA());
+			pstmt.setString(5,  arrendador.getProfesionA());
+			pstmt.setString(6,  arrendador.getLugarTrabajoA());
+			pstmt.setString(7,  arrendador.getDescripcionPropiedadA());
+                        pstmt.setInt(8,  arrendador.getSalarioA());
+			int n = pstmt.executeUpdate();
+			System.out.println(n);
+			//valida si se guardaron los datos; si pst>0 entonces se guardaron
+			if (n > 0)
+				System.out.println("Insertado correctamente");
+			JOptionPane.showMessageDialog(null, "El propietario " + arrendador.getNombresA() + "\n Se ha actulizado con exito ");
+			
+			dbConexion.desconect();
+			
+
+		} catch (Exception e) {
+			
+			System.out.println("Error editando propietario" + e);
+		}
+	}
+          
+        public void actualizarPropiedad(int id) {
+		
+                int precioAlquilerPropiedad=Integer.parseInt(jtfPropiedadPrecioAlquiler.getText());
+                
+                Propiedad propiedad = new Propiedad (jtfPropiedadSnr.getText(),jtfPropiedadDireccion.getText(),jtfPropiedadTelefono.getText(),jtfPropiedadBarrio.getText(),jtfPropiedadZona.getText(), precioAlquilerPropiedad,jtfPropiedadDescripcion.getText());
+
+		String query = "UPDATE Propiedad "
+				+ "SET numero_de_matricula = ?,"
+				+ "direccion  = ?,"
+				+ "telefono  = ?,"
+				+ "barrio = ?,"
+				+ "zona = ?,"
+				+ "precio_alquiler = ?,"
+				+ "descripcion_de_la_propiedad = ? "   
+				+ " WHERE id = " + id ;
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+                    PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, propiedad.getNumMatricula());
+			pstmt.setString(2,  propiedad.getDireccion());
+			pstmt.setString(3,  propiedad.getTelefono());
+			pstmt.setString(4,  propiedad.getBarrio());
+			pstmt.setString(5,  propiedad.getZona());
+			pstmt.setInt(6,  propiedad.getPrecioAlquiler());
+			pstmt.setString(7,  propiedad.getDescripcionPropiedad());
+			int n = pstmt.executeUpdate();
+			System.out.println(n);
+			//valida si se guardaron los datos; si pst>0 entonces se guardaron
+			if (n > 0)
+				System.out.println("Insertado correctamente");
+			JOptionPane.showMessageDialog(null, "La propiedad " + propiedad.getNumMatricula() + "\n Se ha actulizado con exito ");
+			
+			dbConexion.desconect();
+			
+
+		} catch (Exception e) {
+			
+			System.out.println("Error editando propiedad" + e);
 		}
 	}
     /**
@@ -291,9 +461,19 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
             }
         });
 
-        modificarPopietario.setText("Modificar");
+        modificarPopietario.setText("Buscar/Actualizar");
+        modificarPopietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPopietarioActionPerformed(evt);
+            }
+        });
 
         limpiarPopietario.setText("Limpiar");
+        limpiarPopietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarPopietarioActionPerformed(evt);
+            }
+        });
 
         jtfArrendadorDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,9 +631,19 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
             }
         });
 
-        modificarPropiedad.setText("Modificar");
+        modificarPropiedad.setText("Buscar/Actualizar");
+        modificarPropiedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPropiedadActionPerformed(evt);
+            }
+        });
 
         limpiarPropiedad.setText("Limpiar");
+        limpiarPropiedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarPropiedadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -570,9 +760,19 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
             }
         });
 
-        modificarArrendatario.setText("Modificar");
+        modificarArrendatario.setText("Buscar/Actualizar");
+        modificarArrendatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarArrendatarioActionPerformed(evt);
+            }
+        });
 
         limpiarArrendatario.setText("Limpiar");
+        limpiarArrendatario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarArrendatarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -637,7 +837,7 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfArrendatarioProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel23)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfArrendatarioLugarTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -816,10 +1016,17 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarArrendatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarArrendatarioActionPerformed
+        if (permisoEdicion == false){
         int salarioCliente = Integer.parseInt(jtfArrendatarioSalario.getText());
         
         Cliente cliente = new Cliente(jtfArrendatarioNombres.getText(),jtfArrendatarioApellidos.getText(),jtfArrendatarioTelefono.getText(),jtfArrendatarioDireccion.getText(),jtfArrendatarioProfesion.getText(),jtfArrendatarioLugarTrabajo.getText(),jtfArrendatarioDescripcion.getText(), salarioCliente);
         enviarElementoC(cliente);
+        borrarDatosIngresadoCliente();
+        }else{
+            actualizarArrendatario(idGeneralBaseDatos);
+            borrarDatosIngresadoCliente();
+            permisoEdicion = false;
+        }
     // TODO add your handling code here:
     }//GEN-LAST:event_guardarArrendatarioActionPerformed
 
@@ -852,9 +1059,19 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfPropiedadDescripcionActionPerformed
 
     private void guardarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPropiedadActionPerformed
-        int precioAlquilerPropiedad=Integer.parseInt(jtfPropiedadPrecioAlquiler.getText());
-        Propiedad propiedad = new Propiedad (jtfPropiedadSnr.getText(),jtfPropiedadDireccion.getText(),jtfPropiedadTelefono.getText(),jtfPropiedadBarrio.getText(),jtfPropiedadZona.getText(), precioAlquilerPropiedad,jtfPropiedadDescripcion.getText());
-        enviarElementoP(propiedad);
+        
+        if (permisoEdicion == false){
+            int precioAlquilerPropiedad=Integer.parseInt(jtfPropiedadPrecioAlquiler.getText());
+            Propiedad propiedad = new Propiedad (jtfPropiedadSnr.getText(),jtfPropiedadDireccion.getText(),jtfPropiedadTelefono.getText(),jtfPropiedadBarrio.getText(),jtfPropiedadZona.getText(), precioAlquilerPropiedad,jtfPropiedadDescripcion.getText());
+            enviarElementoP(propiedad);
+            borrarDatosIngresadoPropiedad();
+        }else{
+            actualizarPropiedad(idGeneralBaseDatos);
+            borrarDatosIngresadoPropiedad();
+            permisoEdicion = false;
+        }
+        
+        
     // TODO add your handling code here:
     }//GEN-LAST:event_guardarPropiedadActionPerformed
 
@@ -863,13 +1080,132 @@ public class RegistroYDisponibilidad extends javax.swing.JFrame {
     }//GEN-LAST:event_jtfArrendadorDescripcionActionPerformed
 
     private void guardarPopietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarPopietarioActionPerformed
+        if (permisoEdicion == false){
         int salarioPropietario = Integer.parseInt(jtfArrendadorSalario.getText());
         
         Arrendador arrendador = new Arrendador(jtfArrendadorNombre.getText(),jtfArrendadorApellidos.getText(),jtfArrendadorTelefono.getText(),jtfArrendadorDireccion.getText(),jtfArrendadorProfesion.getText(),jtfArrendadorLugarTrabajo.getText(),jtfArrendadorDescripcion.getText(), salarioPropietario);
         enviarElementoA(arrendador);
-
+        borrarDatosIngresadoArrendador();
+        }else{
+            actualizarArrendador(idGeneralBaseDatos);
+            borrarDatosIngresadoArrendador();
+            permisoEdicion = false;
+        }
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_guardarPopietarioActionPerformed
+
+    private void limpiarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarPropiedadActionPerformed
+     
+        borrarDatosIngresadoPropiedad();   
+        
+    }//GEN-LAST:event_limpiarPropiedadActionPerformed
+
+    private void limpiarArrendatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarArrendatarioActionPerformed
+        
+        borrarDatosIngresadoCliente();
+           
+    }//GEN-LAST:event_limpiarArrendatarioActionPerformed
+
+    private void limpiarPopietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarPopietarioActionPerformed
+       
+        borrarDatosIngresadoArrendador();
+        
+    }//GEN-LAST:event_limpiarPopietarioActionPerformed
+
+    private void modificarPopietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPopietarioActionPerformed
+        
+        String telefono = JOptionPane.showInputDialog("Ingrese el número de teléfono del propietario a buscar");
+		JOptionPane.showMessageDialog(null, "Se buscarán los datos para el teléfono " + telefono);
+        
+        ConexionBDInmobiliaria conexionbd = new ConexionBDInmobiliaria(); 
+        
+        ResultSet rs = conexionbd.buscarPropietario(telefono);
+        
+        try {
+            while (rs.next()){
+                idGeneralBaseDatos=rs.getInt("id");
+                
+                jtfArrendadorNombre.setText(rs.getString("nombres"));
+                jtfArrendadorApellidos.setText(rs.getString("apellidos"));
+                jtfArrendadorTelefono.setText(rs.getString("telefono"));
+                jtfArrendadorDireccion.setText(rs.getString("direccion"));
+                jtfArrendadorProfesion.setText(rs.getString("profesion"));
+                jtfArrendadorLugarTrabajo.setText(rs.getString("lugar_de_trabajo"));
+                jtfArrendadorDescripcion.setText(rs.getString("descripcion_de_la_propiedad"));
+                jtfArrendadorSalario.setText(rs.getString("salario"));
+                
+            }
+        conexionbd.desconect();
+        permisoEdicion = true;
+        }catch(Exception e){
+            
+            e.printStackTrace();
+        }
+            
+    }//GEN-LAST:event_modificarPopietarioActionPerformed
+
+    private void modificarArrendatarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarArrendatarioActionPerformed
+        
+        String telefono = JOptionPane.showInputDialog("Ingrese el número de teléfono del arrendatario a buscar");
+		JOptionPane.showMessageDialog(null, "Se buscarán los datos para el teléfono " + telefono);
+        
+        ConexionBDInmobiliaria conexionbd = new ConexionBDInmobiliaria(); 
+        
+        ResultSet rs = conexionbd.buscarArrendatario(telefono);
+        
+        try {
+            while (rs.next()){
+                idGeneralBaseDatos=rs.getInt("id");
+                
+                jtfArrendatarioNombres.setText(rs.getString("nombres"));
+                jtfArrendatarioApellidos.setText(rs.getString("apellidos"));
+                jtfArrendatarioTelefono.setText(rs.getString("telefono"));
+                jtfArrendatarioDireccion.setText(rs.getString("direccion"));
+                jtfArrendatarioProfesion.setText(rs.getString("profesion"));
+                jtfArrendatarioLugarTrabajo.setText(rs.getString("lugar_de_trabajo"));
+                jtfArrendatarioDescripcion.setText(rs.getString("descripcion_de_la_propiedad"));
+                jtfArrendatarioSalario.setText(rs.getString("salario"));
+                
+            }
+        conexionbd.desconect();
+        permisoEdicion = true;
+        }catch(Exception e){
+            
+            e.printStackTrace();
+        }
+       
+    }//GEN-LAST:event_modificarArrendatarioActionPerformed
+
+    private void modificarPropiedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPropiedadActionPerformed
+        
+        
+        String matricula = JOptionPane.showInputDialog("Ingrese el número de teléfono del arrendatario a buscar");
+		JOptionPane.showMessageDialog(null, "Se buscarán los datos para el teléfono " + matricula);
+        
+        ConexionBDInmobiliaria conexionbd = new ConexionBDInmobiliaria(); 
+        
+        ResultSet rs = conexionbd.buscarPropiedad(matricula);
+        
+        try {
+            while (rs.next()){
+                idGeneralBaseDatos=rs.getInt("id");
+                
+                jtfPropiedadSnr.setText(rs.getString("numero_de_matricula"));
+                jtfPropiedadTelefono.setText(rs.getString("telefono"));
+                jtfPropiedadZona.setText(rs.getString("zona"));
+                jtfPropiedadDireccion.setText(rs.getString("direccion"));
+                jtfPropiedadBarrio.setText(rs.getString("barrio"));
+                jtfPropiedadPrecioAlquiler.setText(rs.getString("precio_alquiler"));
+                jtfPropiedadDescripcion.setText(rs.getString("descripcion_de_la_propiedad"));
+            }
+        conexionbd.desconect();
+        permisoEdicion = true;
+        }catch(Exception e){
+            
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_modificarPropiedadActionPerformed
 
     /**
      * @param args the command line arguments

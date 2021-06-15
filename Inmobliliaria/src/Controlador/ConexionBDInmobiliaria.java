@@ -7,6 +7,8 @@ package Controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -42,4 +44,64 @@ public class ConexionBDInmobiliaria {
 		}  
     }
        
+	public ResultSet buscarPropietario(String item) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String query = "SELECT * FROM Propietario WHERE telefono = ?";
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, item);
+			rs = pstmt.executeQuery();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return rs;
+
+	}
+        public ResultSet buscarPropiedad(String item) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String query = "SELECT * FROM Propiedad WHERE numero_de_matricula = ?";
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, item);
+			rs = pstmt.executeQuery();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return rs;
+
+	}
+        public ResultSet buscarArrendatario(String item) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String query = "SELECT * FROM Arrendatario WHERE telefono = ?";
+
+		try {
+			ConexionBDInmobiliaria dbConexion = new ConexionBDInmobiliaria();
+			Connection con = dbConexion.getConnection();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, item);
+			rs = pstmt.executeQuery();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return rs;
+
+	}
 }
